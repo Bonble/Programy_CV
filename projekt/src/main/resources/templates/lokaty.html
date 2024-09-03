@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lokaty</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+    <p>Jesteś gościem</p>
+    <nav>
+    <a href="/" th:href="@{/}">Strona główna</a>
+    <a class="active" href="/" th:href="@{/lokaty}">Lokaty</a>
+    <a href="/" th:href="@{/kursy}">Kursy walut</a>
+    <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/login}">Zaloguj się</a>
+    <p>Część teoretyczna</p>
+    <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+    <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+    <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+    <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+    </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    <main>
+        <article>
+            <header><h2>Lokaty stałoprocentowe</h2></header>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Bank</th>
+                    <th>Nazwa</th>
+                    <th>Procent</th>
+                    <th>Procent po opodatkowaniu</th>
+                    <th>Okres</th>
+                    <th>Minimum</th>
+                    <th>Maksimum</th>
+                    <th>Anulowanie przedterminowe</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${lokataItems}">
+                    <td th:text="${item.bank}"></td>
+                    <td th:text="${item.nazwa}"></td>
+                    <td th:text="${item.procent}"></td>
+                    <td th:text="${item.procent_po_opodatkowaniu}"></td>
+                    <td th:text="${item.okres}"></td>
+                    <td th:text="${item.minimum}"></td>
+                    <td>
+                        <span th:if="${item.maksimum} == 0" th:text="brak" />
+                        <span th:unless="${item.maksimum} == 0" th:text=${item.maksimum} />
+                    </td>
+                    <td th:text="${item.anulowanie}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </article>
+    </main>
+</div>
+
+</body>
+</html>

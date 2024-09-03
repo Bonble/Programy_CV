@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Krypto</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+    <p th:text="${'Witaj, '+ name}"></p>
+    <nav>
+        <a href="/" th:href="@{/}">Strona główna</a>
+    <a href="/" th:href="@{/lokaty}">Lokaty</a>
+    <a href="/" th:href="@{/kursy}">Kursy walut</a>
+    <a class="active" href="/" th:href="@{/krypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/oszczednosci}">Moje oszczędności</a>
+    <a href="/" th:href="@{/historia}">Historia</a>
+    <a href="/" th:href="@{/logout}">Wyloguj się</a>
+    <p>Część teoretyczna</p>
+    <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+    <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+    <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+    <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+    </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    <main>
+        <article>
+            <header><h2>Waluty</h2></header>
+            <h4>Powered by <a href="https://www.coingecko.com/">CoinGecko</a></h4>
+            <div th:if="${param.zaDuzo}">
+                <div class="alert alert-danger">Ilość sprzedaży większa od ilości na koncie</div>
+            </div>
+            <div th:if="${param.sprzedano}">
+                <div class="alert alert-info">Sprzedano walutę</div>
+            </div>
+            <div th:if="${param.kupiono}">
+                <div class="alert alert-info">Kupiono walutę</div>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Wybierz</th>
+                    <th>Waluta</th>
+                    <th>Ilosc na koncie</th>
+                    <th>Kurs</th>
+                    <th>Trend dniowy (w %)</th>
+                    <th>Trend tygodniowy (w %)</th>
+                    <th>Trend miesięczny (w %)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="item : ${walutaItems}">
+                    <tr name="wiersz" class="wiersz">
+                        <td><input type="radio" th:id="${item.id}" name="id" th:value="${item.id}"></td>
+                        <td th:text="${item.nazwa}"></td>
+                        <td>
+                            <span th:if="${item.ilosc} == null" th:text="0" />
+                            <span th:unless="${item.ilosc} == null" th:text=${item.ilosc} />
+                        </td>
+                        <td th:text="${item.kupno}"></td>
+                        <td th:text="${item.trend_dzien}" name="trend"></td>
+                        <td th:text="${item.trend_tydzien}" name="trend"></td>
+                        <td th:text="${item.trend_miesiac}" name="trend"></td>
+                    </tr>
+                    <tr style="display: none;font-size: larger;" th:id="'dane'+${item.id}" name="dane">
+                        <td colspan="3"></td>
+                        <td colspan="4" th:id="'obliczenia'+${item.id}">
+                            <form action="#" th:action="@{/operacjaKrypto}"  th:object="${waluta}" method="POST">
+                                <input type="hidden" th:value="${item.nazwa}" name="nazwa">
+                                Ilość:
+                                <input type="number"
+                                       step="0.00001"
+                                       min="0"
+                                       name="ilosc"
+                                       placeholder="0"
+                                >   Cena:
+                                <input type="number"
+                                       step="0.0001"
+                                       min="0"
+                                       name="kupno"
+                                       th:placeholder="${item.kupno}"
+                                       th:value="${item.kupno}"
+                                >
+                                <button type="submit" class="btn btn-outline-success">
+                                    <i class="bi bi-plus-square-fill"></i> Sprzedaj
+                                </button>
+                            </form><br>
+                            <form action="#" th:action="@{/operacjaKrypto}"  th:object="${waluta}" method="POST">
+                                <input type="hidden" th:value="${item.nazwa}" name="nazwa">
+                                Ilość:
+                                <input type="number"
+                                       step="0.00001"
+                                       min="0"
+                                       name="ilosc"
+                                       placeholder="0"
+                                >    Cena:
+                                <input type="number"
+                                       step="0.0001"
+                                       min="0"
+                                       name="sprzedarz"
+                                       th:placeholder="${item.sprzedarz}"
+                                       th:value="${item.sprzedarz}"
+                                >
+                                <button type="submit" class="btn btn-outline-success">
+                                    <i class="bi bi-plus-square-fill"></i> Kup
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+            <div id="chart-timeline"></div>
+        </article>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+var trendy = document.getElementsByName('trend');
+trendy.forEach(function(o){
+  if(Number(o.innerHTML)>0){
+    o.style='color:green;';
+  }else{
+    o.style='color:red;';
+  }
+})
+
+var elements = document.getElementsByName('wiersz');
+var id = document.getElementsByName('id');
+
+for (var i = 0; i < elements.length; i++) {
+  (elements)[i].addEventListener("click", function() {
+    id.forEach(function(o){
+        document.getElementById('dane'+o.id).style.display = 'none';
+     });
+    const rb = this.querySelector('input[name="id"]');
+    rb.checked = true;
+      var obliczenia = document.getElementById('obliczenia'+rb.id);
+      var dane = document.getElementById('dane'+rb.id);
+      dane.style.display = 'table-row';
+
+    let selectedValue = rb.value;
+  })};
+
+  var trendy = document.getElementsByName('trend');
+trendy.forEach(function(o){
+  if(Number(o.innerHTML)>0){
+    o.style='color:green;';
+  }else{
+    o.style='color:red;';
+  }
+})
+
+var btc = [[${btc}]];
+var eth = [[${eth}]];
+var teg = [[${teg}]];
+var euc = [[${euc}]];
+var tet = [[${tet}]];
+var usc = [[${usc}]];
+
+
+var dzis = new Date();
+dzis.setHours(0,0,0,0);
+var rokTemu = dzis;
+rokTemu.setFullYear(rokTemu.getFullYear() - 1);
+
+var data = dzis.valueOf();
+
+var btcDane = [];
+var ethDane = [];
+var tegDane = [];
+var eucDane = [];
+var tetDane = [];
+var uscDane = [];
+
+for (let i = 0; i < btc.length; i++) {
+    btcDane.push([data,btc[i]]);
+    ethDane.push([data,eth[i]]);
+    tegDane.push([data,teg[i]]);
+    eucDane.push([data,euc[i]]);
+    tetDane.push([data,tet[i]]);
+    uscDane.push([data,usc[i]]);
+    data = data.valueOf()+86400000;
+}
+
+
+
+var options = {
+    series: [{
+    name: 'BTC',
+    data: btcDane
+  },{
+    name: 'ETH',
+    data: ethDane
+  },{
+    name: 'TEG',
+    data: tegDane
+  },{
+    name: 'EUC',
+    data: eucDane
+  },{
+    name: 'TET',
+    data: tetDane
+  },{
+    name: 'USC',
+    data: uscDane
+  }],
+    chart: {
+    id: 'area-datetime',
+    type: 'line',
+    height: 350,
+    zoom: {
+      autoScaleYaxis: true
+    }
+  },
+
+  dataLabels: {
+    enabled: false
+  },
+  markers: {
+    size: 0,
+    style: 'hollow',
+  },
+  xaxis: {
+    type: 'datetime',
+    min: rokTemu.getTime(),
+    tickAmount: 6,
+  },
+  tooltip: {
+    x: {
+      format: 'dd MMM yyyy'
+    }
+  },
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart-timeline"), options);
+  chart.render();
+</script>
+
+</body>
+</html>

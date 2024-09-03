@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Krypto</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+    <p>Jesteś gościem</p>
+    <nav>
+    <a href="/" th:href="@{/}">Strona główna</a>
+    <a href="/" th:href="@{/lokaty}">Lokaty</a>
+    <a href="/" th:href="@{/kursy}">Kursy walut</a>
+    <a class="active" href="/" th:href="@{/krypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/login}">Zaloguj się</a>
+    <p>Część teoretyczna</p>
+    <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+    <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+    <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+    <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+    </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    <main>
+        <article>
+            <header><h2>Kryptowaluty</h2></header>
+            <h4>Powered by <a href="https://www.coingecko.com/">CoinGecko</a></h4>
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Waluta</th>
+                    <th>Kurs</th>
+                    <th>Trend dniowy</th>
+                    <th>Trend tygodniowy</th>
+                    <th>Trend miesięczny</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${walutaItems}">
+                    <td th:text="${item.nazwa}"></td>
+                    <td th:text="${item.kupno}"></td>
+                    <td th:text="${item.trend_dzien}" name="trend"></td>
+                    <td th:text="${item.trend_tydzien}" name="trend"></td>
+                    <td th:text="${item.trend_miesiac}" name="trend"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="chart-timeline"></div>
+        </article>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+var trendy = document.getElementsByName('trend');
+trendy.forEach(function(o){
+  if(Number(o.innerHTML)>0){
+    o.style='color:green;';
+  }else{
+    o.style='color:red;';
+  }
+})
+
+var btc = [[${btc}]];
+var eth = [[${eth}]];
+var teg = [[${teg}]];
+var euc = [[${euc}]];
+var tet = [[${tet}]];
+var usc = [[${usc}]];
+
+
+var dzis = new Date();
+dzis.setHours(0,0,0,0);
+var rokTemu = dzis;
+rokTemu.setFullYear(rokTemu.getFullYear() - 1);
+
+var data = dzis.valueOf();
+
+var btcDane = [];
+var ethDane = [];
+var tegDane = [];
+var eucDane = [];
+var tetDane = [];
+var uscDane = [];
+
+for (let i = 0; i < btc.length; i++) {
+    btcDane.push([data,btc[i]]);
+    ethDane.push([data,eth[i]]);
+    tegDane.push([data,teg[i]]);
+    eucDane.push([data,euc[i]]);
+    tetDane.push([data,tet[i]]);
+    uscDane.push([data,usc[i]]);
+    data = data.valueOf()+86400000;
+}
+
+
+
+var options = {
+    series: [{
+    name: 'BTC',
+    data: btcDane
+  },{
+    name: 'ETH',
+    data: ethDane
+  },{
+    name: 'TEG',
+    data: tegDane
+  },{
+    name: 'EUC',
+    data: eucDane
+  },{
+    name: 'TET',
+    data: tetDane
+  },{
+    name: 'USC',
+    data: uscDane
+  }],
+    chart: {
+    id: 'area-datetime',
+    type: 'line',
+    height: 350,
+    zoom: {
+      autoScaleYaxis: true
+    }
+  },
+
+  dataLabels: {
+    enabled: false
+  },
+  markers: {
+    size: 0,
+    style: 'hollow',
+  },
+  xaxis: {
+    type: 'datetime',
+    min: rokTemu.getTime(),
+    tickAmount: 6,
+  },
+  tooltip: {
+    x: {
+      format: 'dd MMM yyyy'
+    }
+  },
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart-timeline"), options);
+  chart.render();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+    <p>Witaj, admin</p>
+    <nav>
+    <a href="/" th:href="@{/logout}">Wyloguj się</a>
+    <a class="active" href="/" th:href="@{/admin}">Admin</a>
+    </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    <main>
+        <article>
+            <header><h2>Panel Administracyjny</h2></header>
+            <div th:if="${param.wykonano}">
+                <div class="alert alert-danger">Aktywowano wczytywanie - może ono zająć kilka minut</div>
+            </div>
+                <div>
+                    <form aaction="#" th:action="@{/adminMaintenance}"  th:object="${lokataAktywna}" method="POST">
+                        <span th:if="${!mainteneceAdmin}">
+                            <input type="submit" value="Włącz administracyjny tryb roboczy">
+                            <input type="submit" value="Wyłącz administracyjny tryb roboczy" disabled>
+                        </span>
+                        <span th:unless="${!mainteneceAdmin}">
+                            <input type="submit" value="Włącz administracyjny tryb roboczy" disabled>
+                            <input type="submit" value="Wyłącz administracyjny tryb roboczy">
+                        </span>
+                    </form>
+                </div>
+                <div>
+                    <form action="#" th:action="@{/adminWczytaj}"  th:object="${adminHelper}" method="POST">
+                        <input type="checkbox" id="lokaty" name="lokaty" value="lokaty" th:checked="*{lokaty}" th:field="${adminHelper.lokaty}">Wczytaj lokaty<br>
+                        <input type="checkbox" id="waluty" name="waluty" value="waluty" th:checked="*{waluty}" th:field="${adminHelper.waluty}">Wczytaj historię walut<br>
+                        <input type="checkbox" id="krypto" name="krypto" value="krypto" th:checked="*{krypto}" th:field="${adminHelper.krypto}">Wczytaj historie kryptowalut<br>
+
+                        <span th:if="${!mainteneceAdmin}"><input type="submit" value="Wczytaj dane" disabled></span>
+                        <span th:unless="${!mainteneceAdmin}"><button type="submit">Wczytaj dane</button></span>
+                    </form>
+                </div>
+        </article>
+    </main>
+</div>
+
+</body>
+</html>

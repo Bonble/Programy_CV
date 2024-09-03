@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teoria - waluty</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+  <p th:text="${'Witaj, '+ name}"></p>
+  <nav>
+    <a href="/" th:href="@{/}">Strona główna</a>
+  <a href="/" th:href="@{/lokaty}">Lokaty</a>
+  <a href="/" th:href="@{/kursy}">Kursy walut</a>
+  <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/oszczednosci}">Moje oszczędności</a>
+  <a href="/" th:href="@{/historia}">Historia</a>
+  <a href="/" th:href="@{/logout}">Wyloguj się</a>
+  <p>Część teoretyczna</p>
+  <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+  <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+  <a class="active" href="/" th:href="@{/opisWaluty}">Waluty</a>
+  <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+  </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  <main>
+    <article>
+      <header><h2>Waluty</h2></header>
+      <p>
+        Inwestowanie w waluty, znane również jako handel walutami lub forex (foreign exchange), polega na kupowaniu i sprzedawaniu walut na rynku międzynarodowym w celu osiągnięcia zysków z różnic kursowych. Jest to jedna z najbardziej płynnych i dynamicznych form inwestycji, która może być prowadzona przez różnych uczestników rynku, w tym banki, firmy, inwestorów indywidualnych oraz spekulantów.
+        Oto kilka kluczowych aspektów inwestowania w waluty:
+      </p>
+      <p>
+        Płynność: Rynek walutowy jest jednym z najbardziej płynnych rynków na świecie, co oznacza, że waluty mogą być łatwo kupowane i sprzedawane w dowolnym momencie. To sprawia, że ​​handel walutami jest atrakcyjny dla inwestorów, którzy szukają szybkich transakcji i możliwości zarabiania na krótkoterminowych zmianach kursów.
+      </p>
+      <p>
+        Wysoki poziom dźwigni finansowej: Handel walutami często wykorzystuje dźwignię finansową, co oznacza, że inwestorzy mogą kontrolować znacznie większe pozycje niż ich kapitał początkowy. To może prowadzić zarówno do szybkich zysków, jak i szybkich strat, więc należy zachować ostrożność i odpowiednio zarządzać ryzykiem.
+      </p>
+      <p>
+        Różnorodność par walutowych: Na rynku forex inwestorzy mogą handlować różnymi parami walutowymi, takimi jak EUR/USD (euro do dolara amerykańskiego), GBP/JPY (funt brytyjski do jena japońskiego) czy USD/JPY (dolar amerykański do jena japońskiego). Istnieje szeroki wybór kombinacji walutowych, co daje inwestorom większą elastyczność w podejmowaniu decyzji inwestycyjnych.
+      </p>
+      <p>
+        Analiza rynku: Inwestowanie w waluty wymaga dogłębnej analizy rynku, w tym analizy fundamentalnej (np. wskaźniki ekonomiczne, polityka monetarna) oraz analizy technicznej (np. wykresy, wskaźniki techniczne). Warto również śledzić wydarzenia makroekonomiczne i polityczne, które mogą mieć wpływ na kursy walutowe.
+      </p>
+      <p>
+        Ryzyko walutowe: Inwestowanie w waluty wiąże się z ryzykiem walutowym, czyli ryzykiem zmiany wartości waluty w stosunku do innych walut. Mogą to być zarówno ryzyka związane z wydarzeniami gospodarczymi i politycznymi, jak i zwykłe wahania kursów na rynku.
+      </p>
+      <p>
+        Platformy handlowe: Handel walutami odbywa się zazwyczaj za pośrednictwem specjalistycznych platform handlowych oferowanych przez brokerów forex. Te platformy umożliwiają inwestorom dokonywanie transakcji, analizowanie rynku i zarządzanie swoimi pozycjami.
+      </p>
+      <p>
+        Inwestowanie w waluty może być atrakcyjną opcją dla inwestorów poszukujących możliwości zarabiania na zmianach kursów walutowych. Jednak z uwagi na wysoki poziom ryzyka i konieczność zdobycia wiedzy i doświadczenia w dziedzinie, zaleca się ostrożne podejście i odpowiednie przygotowanie przed rozpoczęciem handlu na rynku forex.
+      </p>
+    </article>
+  </main>
+</div>
+
+</body>
+</html>

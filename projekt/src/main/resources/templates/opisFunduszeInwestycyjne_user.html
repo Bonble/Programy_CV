@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teoria - fundusze</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+    <p th:text="${'Witaj, '+ name}"></p>
+    <nav>
+        <a href="/" th:href="@{/}">Strona główna</a>
+    <a href="/" th:href="@{/lokaty}">Lokaty</a>
+    <a href="/" th:href="@{/kursy}">Kursy walut</a>
+    <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/oszczednosci}">Moje oszczędności</a>
+    <a href="/" th:href="@{/historia}">Historia</a>
+    <a href="/" th:href="@{/logout}">Wyloguj się</a>
+    <p>Część teoretyczna</p>
+    <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+    <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+    <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+    <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+    <a class="active" href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+    </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    <main>
+      <article>
+            <header><h2>Fundusze inwestycyjne</h2></header>
+            <p>
+                Fundusze inwestycyjne to zbiorcze fundusze, które gromadzą środki pieniężne od wielu inwestorów i inwestują je w różnorodne aktywa finansowe zgodnie z określonymi celami inwestycyjnymi. Są zarządzane przez profesjonalnych menedżerów funduszy, którzy podejmują decyzje inwestycyjne w imieniu inwestorów. Oto kilka kluczowych aspektów funduszy inwestycyjnych:
+            </p>
+            <p>
+                Dywersyfikacja portfela: Fundusze inwestycyjne pozwalają inwestorom dywersyfikować swoje portfele, ponieważ inwestycje są rozproszone na różne aktywa finansowe, takie jak akcje, obligacje, nieruchomości czy surowce. Dzięki temu ryzyko inwestycyjne jest rozłożone, co może zmniejszyć ryzyko straty kapitału.
+            </p>
+            <p>
+                Profesjonalne zarządzanie: Fundusze inwestycyjne są zarządzane przez doświadczonych menedżerów funduszy, którzy mają za zadanie osiągnięcie określonych celów inwestycyjnych. Ci menedżerowie analizują rynek, podejmują decyzje inwestycyjne i monitorują wydajność portfela funduszu.
+            </p>
+            <p>
+                Różne typy funduszy: Istnieje wiele różnych typów funduszy inwestycyjnych, w tym fundusze akcyjne, obligacyjne, mieszane, indeksowe, sektorowe, nieruchomościowe itp. Każdy rodzaj funduszu ma swoje specyficzne cechy, cele inwestycyjne i strategie inwestycyjne.
+            </p>
+            <p>
+                Koszty i opłaty: Inwestowanie w fundusze inwestycyjne wiąże się z kosztami i opłatami, które mogą obejmować opłatę za zarządzanie, opłatę za wykonywanie transakcji, opłatę za dystrybucję, prowizję oraz inne koszty związane z zarządzaniem funduszem. Ważne jest, aby zrozumieć te koszty i uwzględnić je podczas oceny opłacalności inwestycji.
+            </p>
+            <p>
+                Łatwy dostęp do rynków: Fundusze inwestycyjne umożliwiają inwestorom łatwy dostęp do różnych rynków finansowych, które mogą być trudne do osiągnięcia dla pojedynczych inwestorów. Dzięki funduszom inwestycyjnym inwestorzy mogą łatwo inwestować w akcje zagraniczne, obligacje korporacyjne, surowce czy rynki wschodzące.
+            </p>
+            <p>
+                Monitorowanie wydajności: Inwestorzy w fundusze inwestycyjne mogą regularnie monitorować wydajność swoich inwestycji poprzez dostęp do informacji o wartości jednostek uczestnictwa (JU) oraz raportów o wydajności funduszu. To pozwala inwestorom śledzić postępy swoich inwestycji i podejmować odpowiednie decyzje inwestycyjne.
+            </p>
+            <p>
+                Inwestowanie w fundusze inwestycyjne może być atrakcyjną opcją dla inwestorów poszukujących dywersyfikacji portfela, profesjonalnego zarządzania oraz łatwego dostępu do różnych rynków finansowych. Jednak zaleca się dokładne zapoznanie się z charakterystyką danego funduszu, jego kosztami oraz strategią inwestycyjną przed podjęciem decyzji inwestycyjnej.
+            </p>
+      </article>
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="UTF-8">
+  <title>Logowanie</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+  <p>Jesteś gościem</p>
+  <nav>
+  <a href="/" th:href="@{/}">Strona główna</a>
+  <a href="/" th:href="@{/lokaty}">Lokaty</a>
+  <a href="/" th:href="@{/kursy}">Kursy walut</a>
+  <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+  <a class="active" href="/" th:href="@{/login}">Zaloguj się</a>
+  <p>Część teoretyczna</p>
+  <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+  <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+  <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+  <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+  </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  <main>
+    <article>
+      <div class = "row">
+        <div class = "col-md-6 col-md-offset-3">
+          <header><h1> Logowanie </h1></header>
+          <form th:action="@{/login}" method="post">
+            <!-- error message -->
+            <div th:if="${param.error}">
+              <div class="alert alert-danger">Zły login lub hasło</div>
+            </div>
+            <!-- logout message -->
+            <div th:if="${param.logout}">
+              <div class="alert alert-info">Wylogowałeś się.</div>
+            </div>
+            <div class = "form-group">
+              <label for ="username"> Login </label> :
+              <input type="text" class = "form-control" id ="username" name = "username"
+                     placeholder="Wpisz login" autofocus="autofocus">
+            </div>
+            <div class="form-group">
+              <label for="password">Hasło</label>: <input type="password"
+                                                             id="password" name="password" class="form-control"
+                                                             placeholder="Wpisz hasło " />
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <input type="submit" name="login-submit" id="login-submit"
+                         class="form-control btn btn-primary" value="Zaloguj się" />
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="form-group">
+          <span>Nie masz konta? <a href="/" th:href="@{/registration}">Zarejestruj się tutaj!</a></span>
+            <br>
+            <span><a href="/" th:href="@{/}">Wróć do strony głównej</a></span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+    <p>Jesteś gościem</p>
+    <nav>
+    <a class="active" href="/" th:href="@{/}">Strona główna</a>
+    <a href="/" th:href="@{/lokaty}">Lokaty</a>
+    <a href="/" th:href="@{/kursy}">Kursy walut</a>
+    <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/login}">Zaloguj się</a>
+    <p>Część teoretyczna</p>
+    <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+    <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+    <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+    <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+    </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    <main>
+        <article>
+            <header><h2>Witaj na mojej stronie wspomagającej inwestowanie!</h2></header>
+            <p>
+                Ta strona jest stworzona w celu wpomagania w inwestowaniu dla ludzi którzy dopiero zaczynają inwestować i
+                szukają źródła które wskarze im proste i bezpieczne inwestycje dzięki którym będą mogli pomnażać swoje środki
+                bez większego ryzyka i bez wymagania dogłębnej wiedzy w tematach typu rynek giełdy, który wymaga dużo nauki i
+                poświęconego czasu aby nie stracić pieniędzy.
+            </p>
+            <p>
+                Na tej stronie szybko możesz znaleść informacje o lokatach stałoprocentowych w różnych bankach, kursach najpopularniejszych
+                walut jak i kryptowalut, z naciśkiem na stablecoiny.
+            </p>
+            <p>
+                Po rejestracji możesz dodawać te instrumenty do swojego portfolio, sprawdzać aktualnie posiadane instrumenty,
+                jak i zobaczyć historię swoich inwestycji.
+            </p>
+            <p>
+                Codziennie o 0:00 uruchamiany jest tryb roboczy trwający 5 minut,
+                w trakcie którego dane na stronie są automatycznie aktualizowane.
+            </p>
+        </article>
+    </main>
+</div>
+
+</body>
+</html>

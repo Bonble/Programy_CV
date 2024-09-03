@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Historia</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+  <p th:text="${'Witaj, '+ name}"></p>
+  <nav>
+    <a href="/" th:href="@{/}">Strona główna</a>
+  <a href="/" th:href="@{/lokaty}">Lokaty</a>
+  <a href="/" th:href="@{/kursy}">Kursy walut</a>
+  <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/oszczednosci}">Moje oszczędności</a>
+  <a class="active" href="/" th:href="@{/historia}">Historia</a>
+  <a href="/" th:href="@{/logout}">Wyloguj się</a>
+  <p>Część teoretyczna</p>
+  <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+  <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+  <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+  <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+  </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  <main>
+    <article>
+      <header><h2>Historia twoich inwestycji</h2></header>
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>Typ</th>
+          <th>Nazwa</th>
+          <th>Start</th>
+          <th>Koniec</th>
+          <th>Wkład</th>
+          <th>Zwrot</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${historiaItems}">
+          <td th:text="${item.typ}"></td>
+          <td th:text="${item.nazwa}"></td>
+          <td>
+            <span th:if="${item.data_start} == null" th:text="brak" />
+            <span th:unless="${item.data_start} == null" th:text=${item.data_start} />
+          </td>
+          <td>
+            <span th:if="${item.data_koniec} == null" th:text="brak" />
+            <span th:unless="${item.data_koniec} == null" th:text=${item.data_koniec} />
+          </td>
+          <td>
+            <span th:if="${item.wklad} == null" th:text="brak" />
+            <span th:unless="${item.wklad} == null" th:text=${item.wklad} />
+          </td>
+          <td>
+            <span th:if="${item.zwrot} == null" th:text="brak" />
+            <span th:unless="${item.zwrot} == null" th:text=${item.zwrot} />
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </main>
+</div>
+</body>
+</html>

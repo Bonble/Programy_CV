@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teoria - krypto</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+    <p th:text="${'Witaj, '+ name}"></p>
+    <nav>
+        <a href="/" th:href="@{/}">Strona główna</a>
+    <a href="/" th:href="@{/lokaty}">Lokaty</a>
+    <a href="/" th:href="@{/kursy}">Kursy walut</a>
+    <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/oszczednosci}">Moje oszczędności</a>
+    <a href="/" th:href="@{/historia}">Historia</a>
+    <a href="/" th:href="@{/logout}">Wyloguj się</a>
+    <p>Część teoretyczna</p>
+    <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+    <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+    <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+    <a class="active" href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+    <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+    </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    <main>
+        <article>
+            <header><h2>Kryptowaluty</h2></header>
+            <p>
+                Inwestowanie w kryptowaluty, w tym stablecoiny, to forma inwestycji, która zdobyła popularność w ostatnich latach ze względu na swoją dynamiczność i potencjalnie wysokie zyski. Kryptowaluty to cyfrowe aktywa, które wykorzystują technologię blockchain do zabezpieczenia transakcji i tworzenia nowych jednostek. Oto kilka istotnych informacji na temat inwestowania w kryptowaluty, w tym stablecoiny:
+            </p>
+            <p>
+                Kryptowaluty jako aktywa cyfrowe: Kryptowaluty, takie jak Bitcoin, Ethereum, Ripple, Litecoin i wiele innych, są rodzajem aktywów cyfrowych, które nie są kontrolowane przez żadną centralną instytucję finansową ani rząd. Ich wartość jest często określana przez podaż i popyt na rynku.
+            </p>
+            <p>
+                Wysokie wahania cen: Kursy kryptowalut mogą być bardzo zmienne, co oznacza, że inwestowanie w nie wiąże się z wysokim ryzykiem. Ceny mogą gwałtownie wzrastać lub spadać w krótkim czasie, co może prowadzić zarówno do znacznych zysków, jak i strat.
+            </p>
+            <p>
+                Różnorodność kryptowalut: Istnieje tysiące różnych kryptowalut, z których każda ma swoje unikalne cechy i zastosowania. Inwestorzy mogą wybierać spośród różnych kryptowalut w zależności od swoich preferencji i strategii inwestycyjnych.
+            </p>
+            <p>
+                Stablecoiny: Stablecoiny to rodzaj kryptowalut, których wartość jest zazwyczaj stabilna lub "związana" z innymi aktywami, takimi jak waluty fiat (np. dolar amerykański, euro) lub surowce (np. złoto). Ich celem jest zapewnienie stabilności wartości w porównaniu z innymi kryptowalutami, co może być atrakcyjne dla inwestorów poszukujących mniejszego ryzyka.
+            </p>
+            <p>
+                Zastosowania stablecoinów: Stablecoiny mogą być wykorzystywane do różnych celów, w tym jako forma płatności w ekosystemach blockchainowych, do przechowywania wartości w trakcie handlu kryptowalutami oraz do transakcji między różnymi platformami i usługami w sektorze kryptowalutowym.
+            </p>
+            <p>
+                Platformy i giełdy kryptowalutowe: Inwestowanie w kryptowaluty odbywa się zazwyczaj za pośrednictwem platform handlowych i giełd kryptowalutowych, które umożliwiają kupno, sprzedaż i przechowywanie różnych kryptowalut. Należy wybierać renomowane platformy, które zapewniają bezpieczeństwo i zgodność z przepisami prawnymi.
+            </p>
+            <p>
+                Inwestowanie w kryptowaluty, w tym stablecoiny, może być atrakcyjną opcją dla inwestorów poszukujących alternatywnych form inwestycji. Jednak z uwagi na wysokie ryzyko związane z rynkiem kryptowalut, zaleca się dokładne zapoznanie się z rynkiem, badanie projektów oraz zarządzanie ryzykiem przed podjęciem decyzji inwestycyjnej.
+            </p>
+        </article>
+    </main>
+</div>
+
+</body>
+</html>

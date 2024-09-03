@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teoria - emerytury</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+  <p th:text="${'Witaj, '+ name}"></p>
+  <nav>
+    <a href="/" th:href="@{/}">Strona główna</a>
+  <a href="/" th:href="@{/lokaty}">Lokaty</a>
+  <a href="/" th:href="@{/kursy}">Kursy walut</a>
+  <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/oszczednosci}">Moje oszczędności</a>
+  <a href="/" th:href="@{/historia}">Historia</a>
+  <a href="/" th:href="@{/logout}">Wyloguj się</a>
+  <p>Część teoretyczna</p>
+  <a class="active" href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+  <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+  <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+  <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+  </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  <main>
+    <article>
+      <header><h2>Opcje emerytalne</h2></header>
+      <p>
+        Gromadzenie i pomnażanie środków na emeryturę to długi proces, który wymaga planowania i dyscypliny. Oto dwa sposoby, które mogą Ci pomóc w osiągnięciu tego celu:
+      </p>
+      <p>
+        Indywidualne Konto Emerytalne (IKE):<br>
+        IKE to dobrowolny program emerytalny, który pozwala osobom pracującym gromadzić środki na przyszłą emeryturę w ramach specjalnego konta inwestycyjnego.<br>
+        Środki zgromadzone na IKE mogą być inwestowane w różnorodne instrumenty finansowe, takie jak fundusze inwestycyjne, akcje, obligacje czy instrumenty pieniężne, zgodnie z preferencjami i stopniem ryzyka inwestora.<br>
+        Środki te są zwolnione z podatku dochodowego, co oznacza, że inwestor nie płaci podatku od zysków kapitałowych ani od wypłacanych środków w momencie przejścia na emeryturę.<br>
+        IKE są przeznaczone wyłącznie na cele emerytalne, a wypłata środków może nastąpić dopiero po osiągnięciu wieku emerytalnego.<br>
+      </p>
+      <p>
+        Indywidualne Konto Zabezpieczenia Emerytalnego (IKZE):<br>
+        IKZE to również dobrowolny program oszczędnościowy, który ma na celu pomóc osobom gromadzić środki na przyszłą emeryturę.<br>
+        Podobnie jak w przypadku IKE, środki zgromadzone na IKZE mogą być inwestowane w różne instrumenty finansowe, z tą różnicą, że IKZE oferuje zazwyczaj większą elastyczność w wyborze instrumentów inwestycyjnych.<br>
+        Podobnie jak w przypadku IKE, środki na IKZE są zwolnione z podatku dochodowego, co oznacza, że inwestor nie płaci podatku od zysków kapitałowych ani od wypłacanych środków, jeśli są wypłacane zgodnie z określonymi przepisami.<br>
+        Jedną z głównych zalet IKZE jest to, że środki mogą być wypłacane nie tylko na cele emerytalne, ale również w przypadku sytuacji nadzwyczajnych, takich jak utrata pracy czy poważna choroba, co sprawia, że IKZE może być atrakcyjną opcją oszczędnościową dla osób, które chcą mieć elastyczny dostęp do zgromadzonych środków.<br>
+      </p>
+    </article>
+  </main>
+</div>
+
+</body>
+</html>

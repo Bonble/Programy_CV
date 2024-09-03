@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="UTF-8">
+  <title>Rejestracja </title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+  <p>Jesteś gościem</p>
+  <nav>
+  <a href="/" th:href="@{/}">Strona główna</a>
+  <a href="/" th:href="@{/lokaty}">Lokaty</a>
+  <a href="/" th:href="@{/kursy}">Kursy walut</a>
+  <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+  <a class="active" href="/" th:href="@{/login}">Zaloguj się</a>
+  <p>Część teoretyczna</p>
+  <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+  <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+  <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+  <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+  </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  <main>
+    <article>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <!-- success message -->
+          <div th:if="${param.success}">
+            <div class="alert alert-info">Zarejestrowałeś się!</div>
+          </div>
+          <div th:if="${param.fail}">
+            <div class="alert alert-info">Rejestracja się nie udała!</div>
+          </div>
+          <header><h1>Rejestracja</h1></header>
+          <form th:action="@{/registration}" method="post" th:object="${user}">
+            <div class="form-group">
+              <label class="control-label" for="login"> Login </label> <input
+                    id="login" class="form-control" th:field="*{login}" required
+                    autofocus="autofocus" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="password"> Hasło </label> <input
+                    id="password" class="form-control" type="password"
+                    th:field="*{password}" required autofocus="autofocus" />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-success">Zarejestruj się</button>
+              <span>Masz już konto? <a href="/" th:href="@{/login}">Zaloguj się tutaj!</a></span>
+              <br>
+              <span><a href="/" th:href="@{/}">Wróć do strony głównej</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </article>
+  </main>
+</div>
+</body>
+</html>

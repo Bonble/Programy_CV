@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Konserwacja</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+    <p>Tryb roboczy!</p>
+    <nav>
+        <a class="active" >Konserwacja</a>
+        <a href="/" th:href="@{/}">Strona główna</a>
+        <p>Część teoretyczna</p>
+        <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+        <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+        <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+        <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+        <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+    </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    <main>
+        <article>
+            Strona jest w trybie konserwacji! Planowana konserwacja jest codziennie o 0:00 do 0:05. Za utrudnienia przepraszamy.
+        </article>
+    </main>
+</div>
+
+</body>
+</html>
+

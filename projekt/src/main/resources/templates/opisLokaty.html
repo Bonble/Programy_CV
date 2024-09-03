@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teoria - lokaty</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+  <p>Jesteś gościem</p>
+  <nav>
+  <a href="/" th:href="@{/}">Strona główna</a>
+  <a href="/" th:href="@{/lokaty}">Lokaty</a>
+  <a href="/" th:href="@{/kursy}">Kursy walut</a>
+  <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/login}">Zaloguj się</a>
+  <p>Część teoretyczna</p>
+  <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+  <a class="active" href="/" th:href="@{/opisLokaty}">Lokaty</a>
+  <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+  <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+  </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  <main>
+    <article>
+      <header><h2>Lokaty</h2></header>
+      <p>
+        Lokata bankowa to rodzaj oszczędnościowej usługi finansowej oferowanej przez banki i inne instytucje finansowe. Jest to popularny sposób gromadzenia środków, który zapewnia pewne zyski przy minimalnym ryzyku. Oto kilka istotnych informacji na temat lokat:
+      </p>
+      <p>
+        Charakterystyka lokat:
+        Lokata to umowa zawarta pomiędzy klientem a bankiem, w ramach której klient deponuje określoną kwotę pieniędzy na określony czas.
+        Czas trwania lokaty może być różny i zazwyczaj wynosi od kilku miesięcy do kilku lat. Im dłuższy okres trwania lokaty, tym zazwyczaj wyższe oprocentowanie.
+      </p>
+      <p>
+        Oprocentowanie:
+        Lokaty oferują stałe oprocentowanie, które jest ustalone w momencie otwierania lokaty i nie zmienia się przez cały okres jej trwania.
+        Oprocentowanie lokat może być stałe lub zmienne, w zależności od warunków oferty.
+      </p>
+      <p>
+        Minimalna kwota lokaty:
+        Banki często ustalają minimalną kwotę, którą klient musi wpłacić na lokatę. Jest to zazwyczaj stosunkowo niska kwota, ale może się różnić w zależności od banku i rodzaju lokaty.
+      </p>
+      <p>
+        Dostępność środków:
+        Podczas trwania lokaty zazwyczaj nie ma możliwości wypłacenia środków przed upływem ustalonego terminu. Jest to tzw. lokata terminowa.
+        Istnieją także lokaty, które pozwalają na częściową lub pełną wypłatę środków przed terminem, jednak zazwyczaj wiąże się to z utratą części lub całości odsetek.
+      </p>
+      <p>
+        Zabezpieczenie środków:
+        Środki zgromadzone na lokacie są zazwyczaj zabezpieczone przez system gwarantowania depozytów, co oznacza, że w przypadku upadłości banku klient ma prawo do otrzymania zwrotu części lub całości zgromadzonych środków, zgodnie z obowiązującymi przepisami i limitami gwarantowanymi przez państwo.
+      </p>
+      <p>
+        Rodzaje lokat:
+        Istnieje wiele rodzajów lokat, takich jak lokaty progresywne, indeksowane inflacją, lokaty strukturyzowane itp. Każda z nich ma swoje specyficzne cechy i warunki.
+      </p>
+      <p>
+        Lokaty mogą być atrakcyjną opcją dla osób poszukujących bezpiecznego sposobu oszczędzania, który zapewnia pewne dochody pasywne. Przed zdecydowaniem się na konkretną lokatę warto porównać oferty różnych banków i dokładnie zapoznać się z warunkami umowy.
+      </p>
+    </article>
+  </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oszczędności</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<!-- The sidebar -->
+<div class="sidebar">
+  <p th:text="${'Witaj, '+ name}"></p>
+  <nav>
+    <a href="/" th:href="@{/}">Strona główna</a>
+  <a href="/" th:href="@{/lokaty}">Lokaty</a>
+  <a href="/" th:href="@{/kursy}">Kursy walut</a>
+  <a href="/" th:href="@{/krypto}">Kryptowaluty</a>
+  <a class="active" href="/" th:href="@{/oszczednosci}">Moje oszczędności</a>
+  <a href="/" th:href="@{/historia}">Historia</a>
+  <a href="/" th:href="@{/logout}">Wyloguj się</a>
+  <p>Część teoretyczna</p>
+  <a href="/" th:href="@{/opisEmerytury}">Emerytury</a>
+  <a href="/" th:href="@{/opisLokaty}">Lokaty</a>
+  <a href="/" th:href="@{/opisWaluty}">Waluty</a>
+  <a href="/" th:href="@{/opisKrypto}">Kryptowaluty</a>
+  <a href="/" th:href="@{/opisFunduszeInwestycyjne}">Fundusze Inwestycyjne</a>
+  </nav>
+</div>
+
+<!-- Page content -->
+<div class="content">
+  <main>
+    <article>
+      <header><h2>Twoje lokaty</h2></header>
+      <div th:if="${param.zakonczono}">
+        <div class="alert alert-info">Zakończono lokatę</div>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>Bank</th>
+          <th>Nazwa</th>
+          <th>Oprocentowanie (w skali roku)</th>
+          <th>(Oprocentowanie po opodatkowaniu)</th>
+          <th>Wkład</th>
+          <th>Start</th>
+          <th>Koniec</th>
+          <th>Oczekiwane zarobki</th>
+          <th>Anulowanie przedterminowe</th>
+          <th>Zakończ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${lokataAktywnaItems}">
+          <td th:text="${item.bank}"></td>
+          <td th:text="${item.nazwa}"></td>
+          <td th:id="'procent'+${item.id}" th:text="${item.procent}"></td>
+          <td th:id="'procentPo'+${item.id}" th:text="${item.procent_po_opodatkowaniu}"></td>
+          <td th:id="'ilosc'+${item.id}" th:text="${item.ilosc}"></td>
+          <td th:id="'dataStart'+${item.id}" th:text="${item.data_start}"></td>
+          <td th:id="'dataKoniec'+${item.id}" th:text="${item.data_koniec}"></td>
+          <td th:id="${item.id}" name="zarobki"></td>
+          <td th:text="${item.anulowanie}"></td>
+          <td>
+            <a class="btn btn-danger" th:href="@{/zakonczLokate/{id}(id=${item.id})}">
+            <i class="bi bi-pencil-fill"></i>Zakończ</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <h2>Twoje waluty</h2>
+      <table class="table table-bordered table-striped" style="width: auto">
+        <thead>
+        <tr>
+          <th>Waluta</th>
+          <th>Ilość</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="item : ${walutaItems}">
+          <tr>
+            <td th:text="${item.nazwa}"></td>
+            <td th:text="${item.ilosc}"></td>
+          </tr>
+        </th:block>
+        </tbody>
+      </table>
+      <h2>Twoje Kryptowaluty</h2>
+      <table class="table table-bordered table-striped" style="width: auto">
+        <thead>
+        <tr>
+          <th>Waluta</th>
+          <th>Ilość</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="item : ${kryptoItems}">
+          <tr>
+            <td th:text="${item.nazwa}"></td>
+            <td th:text="${item.ilosc}"></td>
+          </tr>
+        </th:block>
+        </tbody>
+      </table>
+      <center>
+      <div id="chart"></div>
+      </center>
+    </article>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+function roznicaMies(d1, d2) {
+    var mies;
+    mies = (d2.getFullYear() - d1.getFullYear()) * 12;
+    mies -= d1.getMonth();
+    mies += d2.getMonth();
+    return mies <= 0 ? 0 : mies;
+}
+
+var options = document.getElementsByName('zarobki');
+console.log("xd");
+options.forEach(function(option){
+  console.log(option.id);
+  console.log(document.getElementById('dataStart'+option.id).innerHTML);
+  var ilosc = document.getElementById('ilosc'+option.id).innerHTML;
+  var procent = document.getElementById('procent'+option.id).innerHTML;
+  var procentPo = document.getElementById('procentPo'+option.id).innerHTML;
+  var dataKoniec = document.getElementById('dataKoniec'+option.id).innerHTML.split("-");;
+  var dataStart = document.getElementById('dataStart'+option.id).innerHTML.split("-");
+  var rozMies =  roznicaMies(new Date(dataStart[0],dataStart[1]-1,dataStart[2]), new Date(dataKoniec[0],dataKoniec[1]-1,dataKoniec[2]));
+  var procent2 = ((ilosc*(procent/100)*parseFloat(rozMies)/12) + parseFloat(ilosc)).toFixed(2);
+  var procentPo2 = ((ilosc*(procentPo/100)*parseFloat(rozMies)/12) + parseFloat(ilosc)).toFixed(2);
+  option.innerHTML=procent2+"<br>("+procentPo2+")";
+});
+
+var lokatyWartosc = [[${lokatyWartosc}]];
+var walutyWartosc = [[${walutyWartosc}]];
+var kryptoWartosc = [[${kryptoWartosc}]];
+
+        var options = {
+          series: [lokatyWartosc, walutyWartosc, kryptoWartosc],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Lokaty', 'Waluty', 'Kryptowaluty'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+</script>
+</body>
+</html>
