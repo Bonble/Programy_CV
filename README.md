@@ -4,3 +4,10 @@
 #    - administrator może ręcznie pobrać dane o inwestycjach
 #    - aplikacja sama pobiera dane o inwestycjach dodziennie o 1 w nocy
 #        - używa do tego dwóch różnych API i WebScrappingu
+#  ENG
+# I present here my program - a web application written in Java using the Spring framework
+# - it is a website that supports investing. There are two types of users - regular users and admins.
+#   - a regular user can check investment information and add selected investments to their portfolio
+#   - an administrator can manually fetch investment data
+#   - the application automatically fetches investment data daily at 1 AM
+#     - it uses two different APIs and Web Scraping for this purpose
